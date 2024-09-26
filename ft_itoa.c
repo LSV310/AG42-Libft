@@ -6,14 +6,14 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 10:50:59 by agruet            #+#    #+#             */
-/*   Updated: 2024/09/26 13:23:03 by agruet           ###   ########.fr       */
+/*   Updated: 2024/09/27 00:11:31 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int	get_pow(unsigned int n)
+static int	get_pow(unsigned int n)
 {
 	int	pow;
 
