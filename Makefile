@@ -9,11 +9,12 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+.PHONY: clean fclean all re
 clean:
 	rm -f $(OBJ)
 
