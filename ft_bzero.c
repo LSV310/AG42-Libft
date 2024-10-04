@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:02:21 by agruet            #+#    #+#             */
-/*   Updated: 2024/09/24 16:09:36 by agruet           ###   ########.fr       */
+/*   Updated: 2024/10/04 10:38:23 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	ft_bzero(void *s, size_t n)
 	ft_memset(s, 0, n);
 }
 
-/* int	main(void)
+/* #include <stdio.h>
+int	main(void)
 {
 	void	*ptr= NULL;
 	ft_bzero(ptr, 5);
