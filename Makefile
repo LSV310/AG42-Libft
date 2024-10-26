@@ -1,32 +1,37 @@
 CC = cc
+CC_WIN = x86_64-w64-mingw32-gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-PART1_OBJ = Part1/ft_atoi.o Part1/ft_bzero.o Part1/ft_calloc.o Part1/ft_isalnum.o Part1/ft_isalpha.o Part1/ft_isascii.o Part1/ft_isdigit.o Part1/ft_isprint.o Part1/ft_memchr.o Part1/ft_memcmp.o Part1/ft_memcpy.o Part1/ft_memmove.o Part1/ft_memset.o Part1/ft_strchr.o Part1/ft_strdup.o Part1/ft_strlcat.o Part1/ft_strlcpy.o Part1/ft_strlen.o Part1/ft_strncmp.o Part1/ft_strnstr.o Part1/ft_strrchr.o Part1/ft_tolower.o Part1/ft_toupper.o
-PART2_OBJ = Part2/ft_itoa.o Part2/ft_putchar_fd.o Part2/ft_putendl_fd.o Part2/ft_putnbr_fd.o Part2/ft_putstr_fd.o Part2/ft_split.o Part2/ft_striteri.o Part2/ft_strjoin.o Part2/ft_strmapi.o Part2/ft_strtrim.o Part2/ft_substr.o
-OBJ = $(PART1_OBJ) $(PART2_OBJ)
-BONUS_OBJ = Bonus/ft_lstadd_back.o Bonus/ft_lstadd_front.o Bonus/ft_lstclear.o Bonus/ft_lstdelone.o Bonus/ft_lstiter.o Bonus/ft_lstlast.o Bonus/ft_lstmap.o Bonus/ft_lstnew.o Bonus/ft_lstsize.o
+PART1_SRCS = Part1/ft_atoi.c Part1/ft_bzero.c Part1/ft_calloc.c Part1/ft_isalnum.c Part1/ft_isalpha.c Part1/ft_isascii.c Part1/ft_isdigit.c Part1/ft_isprint.c Part1/ft_memchr.c Part1/ft_memcmp.c Part1/ft_memcpy.c Part1/ft_memmove.c Part1/ft_memset.c Part1/ft_strchr.c Part1/ft_strdup.c Part1/ft_strlcat.c Part1/ft_strlcpy.c Part1/ft_strlen.c Part1/ft_strncmp.c Part1/ft_strnstr.c Part1/ft_strrchr.c Part1/ft_tolower.c Part1/ft_toupper.c
+PART2_SRCS = Part2/ft_itoa.c Part2/ft_putchar_fd.c Part2/ft_putendl_fd.c Part2/ft_putnbr_fd.c Part2/ft_putstr_fd.c Part2/ft_split.c Part2/ft_striteri.c Part2/ft_strjoin.c Part2/ft_strmapi.c Part2/ft_strtrim.c Part2/ft_substr.c
+BONUS_SRCS = Bonus/ft_lstadd_back.c Bonus/ft_lstadd_front.c Bonus/ft_lstclear.c Bonus/ft_lstdelone.c Bonus/ft_lstiter.c Bonus/ft_lstlast.c Bonus/ft_lstmap.c Bonus/ft_lstnew.c Bonus/ft_lstsize.c
+OBJ = $(PART1_SRCS:.c=.o) $(PART2_SRCS:.c=.o) $(BONUS_SRCS:.c=.o)
+OBJ_WIN = $(PART1_SRCS:.c=_win.o) $(PART2_SRCS:.c=_win.o) $(BONUS_SRCS:.c=_win.o)
 
 NAME = libft.a
+NAME_WIN = libft_win.a
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
+win: $(OBJ_WIN)
+	ar rcs $(NAME_WIN) $(OBJ_WIN)
+
+%_win.o: %.c
+	$(CC_WIN) $(CFLAGS) -c $< -o $@
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJ) $(BONUS_OBJ)
-	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
-
 clean:
-	rm -f $(OBJ)
-	rm -f $(BONUS_OBJ)
+	rm -f $(OBJ) $(OBJ_WIN)
 
 fclean: clean
-	rm -f libft.a
+	rm -f libft.a libft_win.a
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all win clean fclean re
