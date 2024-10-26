@@ -6,11 +6,11 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:24:49 by agruet            #+#    #+#             */
-/*   Updated: 2024/10/26 14:43:58 by agruet           ###   ########.fr       */
+/*   Updated: 2024/10/26 22:08:42 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 /*
  * On peut lire dans la memoire si jamais on met un start > a la taille de s

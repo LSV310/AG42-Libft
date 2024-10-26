@@ -6,11 +6,11 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 12:03:43 by agruet            #+#    #+#             */
-/*   Updated: 2024/10/10 14:46:46 by agruet           ###   ########.fr       */
+/*   Updated: 2024/10/26 22:08:42 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 t_list	*ft_lstnew(void *content)
 {

@@ -6,11 +6,11 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:05:03 by agruet            #+#    #+#             */
-/*   Updated: 2024/09/24 14:40:01 by agruet           ###   ########.fr       */
+/*   Updated: 2024/10/26 22:08:42 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
