@@ -6,14 +6,14 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:24:49 by agruet            #+#    #+#             */
-/*   Updated: 2024/09/25 22:14:43 by agruet           ###   ########.fr       */
+/*   Updated: 2024/10/26 14:43:58 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * On peut lire dans la memore si jamais on met un start > a la taille de s
+ * On peut lire dans la memoire si jamais on met un start > a la taille de s
  * Ex: ./a.out "Salut" 73 80
  * 	-> DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus%
  * Pour l'empecher il faut lire toute la chaine s et commencé à écrire à start
