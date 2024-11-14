@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:18:51 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/14 16:32:20 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/14 17:21:32 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static int	count_words(char const *s, char c)
 	i = 0;
 	new_word = 1;
 	count = 0;
+	if (!s)
+		return (-1);
 	while (s[i])
 	{
 		if (s[i] != c)
@@ -59,7 +61,7 @@ char	**ft_split(char const *s, char c)
 
 	words = count_words(s, c);
 	tab = ft_calloc(words + 1, sizeof(char *));
-	if (!tab)
+	if (!tab || !s)
 		return (NULL);
 	i = 0;
 	j = 0;
