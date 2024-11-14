@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/14 16:34:55 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/14 17:30:19 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,45 @@
 #include <bsd/string.h>
 #include <stdio.h>
 #include <ctype.h>
+
+static int	count_words(char const *s, char c)
+{
+	int	i;
+	int	new_word;
+	int	count;
+
+	i = 0;
+	new_word = 1;
+	count = 0;
+	if (!s)
+		return (-1);
+	while (s[i])
+	{
+		if (s[i] != c)
+		{
+			if (new_word)
+			{
+				new_word = 0;
+				count++;
+			}
+		}
+		else
+			new_word = 1;
+		i++;
+	}
+	return (count);
+}
+
+static void	*free_tab(char **tab, int nb)
+{
+	int	i;
+
+	i = 0;
+	while (i < nb)
+		free(tab[i++]);
+	free(tab);
+	return (NULL);
+}
 
 int	main(int ac, char **av)
 {
@@ -214,10 +253,11 @@ int	main(int ac, char **av)
 
 	// * strncmp
 	char	strncmp1[] = "salut toi";
-	char	strncmp2[] = "salut moi";
+	char	strncmp2[] = "salut toi";
 	size_t	strncmp3 = 9;
 	size_t	strncmp4 = strncmp(strncmp1, strncmp2, strncmp3);
 	size_t	strncmp5 = ft_strncmp(strncmp1, strncmp2, strncmp3);
+	// printf("%ld | %ld\n", strncmp4, strncmp5);
 	if (strncmp4 == strncmp5)
 		printf("strncmp: OK!\n");
 	else
@@ -240,6 +280,7 @@ int	main(int ac, char **av)
 	size_t	memcmp3 = 5 * sizeof(int);
 	int	memcmp4 = memcmp(memcmp1, memcmp2, memcmp3);
 	int	memcmp5 = ft_memcmp(memcmp1, memcmp2, memcmp3);
+	// printf("%d | %d\n", memcmp4, memcmp5);
 	if (memcmp4 == memcmp5)
 		printf("memcmp:  OK!\n");
 	else
@@ -280,14 +321,27 @@ int	main(int ac, char **av)
 	else
 		printf("strdup:  Error\n");
 
-	/* // * split
-	int	i = 0;
-	int	words = 6; //count_words(av[1], *av[2])
-	char	**split = ft_split(av[1], *av[2]);
-	while (i <= words)
+	// * strjoin
+	char	join1[] = "salut";
+	char	join2[] = "nonon";
+	char	*join = ft_strjoin(join1, join2);
+	strcat(join1, join2);
+	if(strcmp(join1, join) == 0)
+		printf("strjoin: OK!\n");
+	else
+		printf("strjoin: Error\n");
+
+	// * split
+	int		i = 0;
+	char	split_str[] = "salut comment tu vas";
+	int		sep = ' ';
+	int		words = count_words(split_str, sep);
+	char	**split = ft_split(split_str, sep);
+	/* while (i <= words)
 	{
 		printf("%d: %s\n", i, split[i]);
 		i++;
 	} */
+	free_tab(split, words);
 
 }
