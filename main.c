@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/14 15:11:46 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/14 16:34:55 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
+
 	int	count = 0;
 
 	// * isalpha
@@ -278,5 +279,15 @@ int	main(int ac, char **av)
 		printf("strdup:  OK!\n");
 	else
 		printf("strdup:  Error\n");
+
+	/* // * split
+	int	i = 0;
+	int	words = 6; //count_words(av[1], *av[2])
+	char	**split = ft_split(av[1], *av[2]);
+	while (i <= words)
+	{
+		printf("%d: %s\n", i, split[i]);
+		i++;
+	} */
 
 }
