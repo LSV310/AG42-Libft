@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/14 12:31:03 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/14 15:11:46 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	int		count = 0;
-	int		i = 0;
+	int	count = 0;
 
 	// * isalpha
 	char	isalpha1 = 'A';
@@ -109,36 +108,31 @@ int	main(int ac, char **av)
 	char	memset1[] = "salut";
 	char	*memset2 = memset(memset1, 'x', 5);
 	char	*memset3 = ft_memset(memset1, 'x', 5);
-	if (strcmp(memset2, memset3) == 0)
+	if (memcmp(memset2, memset3, 5) == 0)
 		printf("memset:  OK!\n");
 	else
 		printf("memset:  Error\n");
 
 	// * bzero
-	int		bzero1[] = {8,89,40,64,47};
+	int		bzero1[] = {9, 61, 64, 51, 64};
 	int		bzerobuff1[5];
-	memcpy(bzerobuff1, bzero1, 5);
 	int		bzerobuff2[5];
-	memcpy(bzerobuff2, bzero1, 5);
-	bzero(bzerobuff1, 5);
-	ft_bzero(bzerobuff2, 5);
-	while (bzerobuff1[i] == bzerobuff2[i] && i < 5)
-		i++;
-	if (i == 5)
+	memcpy(bzerobuff1, bzero1, 5 * sizeof(int));
+	memcpy(bzerobuff2, bzero1, 5 * sizeof(int));
+	bzero(bzerobuff1, 5 * sizeof(int));
+	ft_bzero(bzerobuff2, 5 * sizeof(int));
+	if (memcmp(bzerobuff1, bzerobuff2, 5 * sizeof(int)) == 0)
 		printf("bzero:   OK!\n");
 	else
 		printf("bzero:   Error\n");
 
 	// * memmove
-	i = 0;
 	char	memmove1[] = "salut";
 	char	memmovebuff1[5];
 	char	memmovebuff2[5];
 	memmove(memmovebuff1, memmove1, 5);
 	ft_memmove(memmovebuff2, memmove1, 5);
-	while (bzerobuff1[i] == bzerobuff2[i] && i < 5)
-		i++;
-	if (i == 5)
+	if (memcmp(memmovebuff1, memmovebuff2, 5) == 0)
 		printf("memmove: OK!\n");
 	else
 		printf("memmove: Error\n");
@@ -196,4 +190,93 @@ int	main(int ac, char **av)
 		printf("tolower: OK!\n");
 	else
 		printf("tolower: Error%d/3\n", count);
+
+	// * strchr
+	char	strchr1[] = "salut toi";
+	char	strchr2 = 't';
+	char	*strchr3 = strchr(strchr1, strchr2);
+	char	*strchr4 = ft_strchr(strchr1, strchr2);
+	if (strcmp(strchr3, strchr4) == 0)
+		printf("strchr:  OK!\n");
+	else
+		printf("strchr:  Error\n");
+
+	// * strrchr
+	char	strrchr1[] = "salut toi";
+	char	strrchr2 = 't';
+	char	*strrchr3 = strrchr(strrchr1, strrchr2);
+	char	*strrchr4 = ft_strrchr(strrchr1, strrchr2);
+	if (strcmp(strrchr3, strrchr4) == 0)
+		printf("strrchr: OK!\n");
+	else
+		printf("strrchr: Error\n");
+
+	// * strncmp
+	char	strncmp1[] = "salut toi";
+	char	strncmp2[] = "salut moi";
+	size_t	strncmp3 = 9;
+	size_t	strncmp4 = strncmp(strncmp1, strncmp2, strncmp3);
+	size_t	strncmp5 = ft_strncmp(strncmp1, strncmp2, strncmp3);
+	if (strncmp4 == strncmp5)
+		printf("strncmp: OK!\n");
+	else
+		printf("strncmp: Error\n");
+
+	// * memchr
+	char	memchr1[] = "salut toi";
+	char	memchr2 = 't';
+	size_t	memchr3 = 10;
+	char	*memchr4 = memchr(memchr1, memchr2, memchr3);
+	char	*memchr5 = ft_memchr(memchr1, memchr2, memchr3);
+	if (memcmp(memchr4, memchr5, memchr3) == 0)
+		printf("memchr:  OK!\n");
+	else
+		printf("memchr:  Error\n");
+
+	// * memcmp
+	int		memcmp1[] = {9, 61, 64, 51, 64};
+	int		memcmp2[] = {9, 61, 64, 51, 64};
+	size_t	memcmp3 = 5 * sizeof(int);
+	int	memcmp4 = memcmp(memcmp1, memcmp2, memcmp3);
+	int	memcmp5 = ft_memcmp(memcmp1, memcmp2, memcmp3);
+	if (memcmp4 == memcmp5)
+		printf("memcmp:  OK!\n");
+	else
+		printf("memcmp:  Error\n");
+
+	// * strnstr
+	char	strnstr1[] = "salut salut comment ca va ajd";
+	char	strnstr2[] = "salut";
+	size_t	strnstr3 = 10;
+	char	*strnstr4 = strnstr(strnstr1, strnstr2, strnstr3);
+	char	*strnstr5 = ft_strnstr(strnstr1, strnstr2, strnstr3);
+	if (strcmp(strnstr4, strnstr5) == 0)
+		printf("strnstr: OK!\n");
+	else
+		printf("strnstr: Error\n");
+
+	// * atoi
+	char	atoi1[] = "  \t \n -2147483648";
+	if (atoi(atoi1) == ft_atoi(atoi1))
+		printf("atoi:    OK!\n");
+	else
+		printf("atoi:    Error\n");
+
+	// * calloc
+	char	*calloc1 = calloc(5, sizeof(char));
+	char	*calloc2 = ft_calloc(5, sizeof(char));
+	if (memcmp(calloc1, calloc2, 5) == 0)
+		printf("calloc:  OK!\n");
+	else
+		printf("calloc:  Error\n");
+
+	// * strdup
+	char	strdup1[] = "salut";
+	char	*strdup2 = strdup(strdup1);
+	char	*strdup3 = ft_strdup(strdup1);
+	if (strcmp(strdup2, strdup3) == 0)
+		printf("strdup:  OK!\n");
+	else
+		printf("strdup:  Error\n");
+
 }
