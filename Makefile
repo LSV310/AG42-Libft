@@ -1,10 +1,10 @@
 CC = cc
 
-CFLAGS = #-Werror -Wextra -Wall
+CFLAGS = #-Werror -Wextra -Wall -g3
 
 SRCS = $(wildcard *.c)
 OBJ = $(SRCS:.c=.o)
-LIBS = -lbsd
+LIBS = -lbsd -g3
 
 NAME = libft.a
 

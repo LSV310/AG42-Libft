@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:14:57 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/12 11:27:09 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/14 10:53:26 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	i;
 
+	if (!s)
+		return (s);
 	i = 0;
 	while (i < n)
 		((char *)s)[i++] = c;
