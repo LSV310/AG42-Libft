@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/14 17:30:19 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/15 10:07:05 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,18 @@ int	main(int ac, char **av)
 	(void)av;
 
 	int	count = 0;
+	int	i = 0;
 
 	// * isalpha
-	char	isalpha1 = 'A';
-	char	isalpha2 = 'z';
-	char	isalpha3 = '8';
-	if (isalpha(isalpha1) == ft_isalpha(isalpha1))
+	count = 0;
+	char	alpha1 = 'A';
+	char	alpha2 = 'z';
+	char	alpha3 = '8';
+	if (isalpha(alpha1) == ft_isalpha(alpha1))
 		count++;
-	if (isalpha(isalpha2) == ft_isalpha(isalpha2))
+	if (isalpha(alpha2) == ft_isalpha(alpha2))
 		count++;
-	if (isalpha(isalpha3) == ft_isalpha(isalpha3))
+	if (isalpha(alpha3) == ft_isalpha(alpha3))
 		count++;
 	if (count == 3)
 		printf("isalpha: OK!\n");
@@ -78,58 +80,58 @@ int	main(int ac, char **av)
 
 	// * isdigit
 	count = 0;
-	char	isdigit1 = '0';
-	char	isdigit2 = 'z';
-	if (isdigit(isdigit1) == ft_isdigit(isdigit1))
+	char	digit1 = '0';
+	char	digit2 = 'z';
+	if (isdigit(digit1) == ft_isdigit(digit1))
 		count++;
-	if (isdigit(isdigit2) == ft_isdigit(isdigit2))
+	if (isdigit(digit2) == ft_isdigit(digit2))
 		count++;
 	if (count == 2)
 		printf("isdigit: OK!\n");
 	else
-		printf("isdigit: Error%d/2\n", count);
+		printf("isdigit: Error:%d/2\n", count);
 
 	// * isalnum
 	count = 0;
-	char	isalnum1 = '0';
-	char	isalnum2 = 'z';
-	char	isalnum3 = ';';
-	if (isalnum(isalnum1) == ft_isalnum(isalnum1))
+	char	alnum1 = '0';
+	char	alnum2 = 'z';
+	char	alnum3 = ';';
+	if (isalnum(alnum1) == ft_isalnum(alnum1))
 		count++;
-	if (isalnum(isalnum2) == ft_isalnum(isalnum2))
+	if (isalnum(alnum2) == ft_isalnum(alnum2))
 		count++;
-	if (isalnum(isalnum3) == ft_isalnum(isalnum3))
+	if (isalnum(alnum3) == ft_isalnum(alnum3))
 		count++;
 	if (count == 3)
 		printf("isalnum: OK!\n");
 	else
-		printf("isalnum: Error%d/3\n", count);
+		printf("isalnum: Error:%d/3\n", count);
 
 	// * isascii
 	count = 0;
-	int	isascii1 = 97;
-	int	isascii2 = 128;
-	if (isascii(isascii1) == ft_isascii(isascii1))
+	int	ascii1 = 97;
+	int	ascii2 = 128;
+	if (isascii(ascii1) == ft_isascii(ascii1))
 		count++;
-	if (isascii(isascii2) == ft_isascii(isascii2))
+	if (isascii(ascii2) == ft_isascii(ascii2))
 		count++;
 	if (count == 2)
 		printf("isascii: OK!\n");
 	else
-		printf("isascii: Error%d/2\n", count);
+		printf("isascii: Error:%d/2\n", count);
 
 	// * isprint
 	count = 0;
-	int	isprint1 = 10;
-	int	isprint2 = 117;
-	if (isprint(isprint1) == ft_isprint(isprint1))
+	int	print1 = 10;
+	int	print2 = 117;
+	if (isprint(print1) == ft_isprint(print1))
 		count++;
-	if (isprint(isprint2) == ft_isprint(isprint2))
+	if (isprint(print2) == ft_isprint(print2))
 		count++;
 	if (count == 2)
 		printf("isprint: OK!\n");
 	else
-		printf("isprint: Error%d/2\n", count);
+		printf("isprint: Error:%d/2\n", count);
 
 	// * strlen
 	count = 0;
@@ -142,59 +144,113 @@ int	main(int ac, char **av)
 	if (count == 2)
 		printf("strlen:  OK!\n");
 	else
-		printf("strlen:  Error%d/2\n", count);
+		printf("strlen:  Error:%d/2\n", count);
 
 	// * memset
+	i = 0;
 	char	memset1[] = "salut";
-	char	*memset2 = memset(memset1, 'x', 5);
-	char	*memset3 = ft_memset(memset1, 'x', 5);
-	if (memcmp(memset2, memset3, 5) == 0)
+	char	*memset_og = memset(memset1, 'x', 5);
+	char	*memset_me = ft_memset(memset1, 'x', 5);
+	// printf("------------\nMEMSET:\n");
+	// printf("OG: ");
+	// while (i < 5)
+	// 	printf("%c ", memset_og[i++]);
+	// printf("\n");
+	// printf("ME: ");
+	// i = 0;
+	// while (i < 5)
+	// 	printf("%c ", memset_me[i++]);
+	// printf("\n------------\n");
+	if (memcmp(memset_og, memset_me, 5) == 0)
 		printf("memset:  OK!\n");
 	else
 		printf("memset:  Error\n");
 
 	// * bzero
 	int		bzero1[] = {9, 61, 64, 51, 64};
-	int		bzerobuff1[5];
-	int		bzerobuff2[5];
-	memcpy(bzerobuff1, bzero1, 5 * sizeof(int));
-	memcpy(bzerobuff2, bzero1, 5 * sizeof(int));
-	bzero(bzerobuff1, 5 * sizeof(int));
-	ft_bzero(bzerobuff2, 5 * sizeof(int));
-	if (memcmp(bzerobuff1, bzerobuff2, 5 * sizeof(int)) == 0)
+	int		bzero2[5];
+	memcpy(bzero2, bzero1, 5 * sizeof(int));
+	bzero(bzero1, 5 * sizeof(int));
+	ft_bzero(bzero2, 5 * sizeof(int));
+	// printf("------------\nBZERO:\n");
+	// printf("OG: ");
+	// while (i < 5)
+	// 	printf("%d ", bzero1[i++]);
+	// printf("\n");
+	// printf("ME: ");
+	// i = 0;
+	// while (i < 5)
+	// 	printf("%d ", bzero2[i++]);
+	// printf("\n------------\n");
+	if (memcmp(bzero1, bzero2, 5 * sizeof(int)) == 0)
 		printf("bzero:   OK!\n");
 	else
 		printf("bzero:   Error\n");
 
+	// * memcpy
+	char	memcpy_src1[] = "salut";
+	char	memcpy_dest1[5];
+	char	memcpy_dest2[5];
+	memcpy(memcpy_dest1, memcpy_src1, 5);
+	ft_memcpy(memcpy_dest2, memcpy_src1, 5);
+	// printf("------------\nMEMCPY:\n");
+	// printf("OG: ");
+	// while (i < 5)
+	// 	printf("%c ", memcpy_dest1[i++]);
+	// printf("\n");
+	// printf("ME: ");
+	// i = 0;
+	// while (i < 5)
+	// 	printf("%c ", memcpy_dest2[i++]);
+	// printf("\n------------\n");
+	if (memcmp(memcpy_dest1, memcpy_dest2, 5) == 0)
+		printf("memcpy:  OK!\n");
+	else
+		printf("memcpy:  Error\n");
+
 	// * memmove
-	char	memmove1[] = "salut";
-	char	memmovebuff1[5];
-	char	memmovebuff2[5];
-	memmove(memmovebuff1, memmove1, 5);
-	ft_memmove(memmovebuff2, memmove1, 5);
-	if (memcmp(memmovebuff1, memmovebuff2, 5) == 0)
+	char	memmove_src1[] = "salut";
+	char	memmove_dest1[5];
+	char	memmove_dest2[5];
+	memmove(memmove_dest1, memmove_src1, 5);
+	ft_memmove(memmove_dest2, memmove_src1, 5);
+	// printf("------------\nMEMMOVE:\n");
+	// printf("OG: ");
+	// while (i < 5)
+	// 	printf("%c ", memmove_dest1[i++]);
+	// printf("\n");
+	// printf("ME: ");
+	// i = 0;
+	// while (i < 5)
+	// 	printf("%c ", memmove_dest2[i++]);
+	// printf("\n------------\n");
+	if (memcmp(memmove_dest1, memmove_dest2, 5) == 0)
 		printf("memmove: OK!\n");
 	else
 		printf("memmove: Error\n");
 
 	// * strlcpy
-	char	strlcpy1[] = "salut";
-	char	strlcpy2[5];
-	char	strlcpy3[5];
-	size_t	strlcpy4 = strlcpy(strlcpy2, strlcpy1, 5);
-	size_t	strlcpy5 = ft_strlcpy(strlcpy3, strlcpy1, 5);
-	if (strcmp(strlcpy2, strlcpy3) == 0 && strlcpy4 == strlcpy5)
+	char	strlcpy_src1[] = "salut";
+	char	strlcpy_dest1[5];
+	char	strlcpy_dest2[5];
+	size_t	strlcpy_og = strlcpy(strlcpy_dest1, strlcpy_src1, 5);
+	size_t	strlcpy_me = ft_strlcpy(strlcpy_dest2, strlcpy_src1, 5);
+	// printf("------------\nSTRLCPY:\nOG: %s | %ld\nME: %s | %ld\n", strlcpy_dest1, strlcpy_og, strlcpy_dest2, strlcpy_me);
+	// printf("------------\n");
+	if (strcmp(strlcpy_dest1, strlcpy_dest2) == 0 && strlcpy_og == strlcpy_me)
 		printf("strlcpy: OK!\n");
 	else
 		printf("strlcpy: Error\n");
 
 	// * strlcat
-	char	strlcat1[10] = "salut";
-	char	strlcat2[30] = "no";
-	char	strlcat3[30] = "no";
-	size_t	strlcat4 = strlcat(strlcat2, strlcat1, 8);
-	size_t	strlcat5 = ft_strlcat(strlcat3, strlcat1, 8);
-	if (strcmp(strlcat2, strlcat3) == 0 && strlcat4 == strlcat5)
+	char	strlcat_src1[6] = "salut";
+	char	strlcat_dest1[8] = "cc";
+	char	strlcat_dest2[8] = "cc";
+	size_t	strlcat_og = strlcat(strlcat_dest1, strlcat_src1, 8);
+	size_t	strlcat_me = ft_strlcat(strlcat_dest2, strlcat_src1, 8);
+	// printf("------------\nSTRLCAT:\nOG: %s | %ld\nME: %s | %ld\n", strlcat_dest1, strlcat_og, strlcat_dest2, strlcat_me);
+	// printf("------------\n");
+	if (strcmp(strlcat_dest1, strlcat_dest2) == 0 && strlcat_og == strlcat_me)
 		printf("strlcat: OK!\n");
 	else
 		printf("strlcat: Error\n");
@@ -213,7 +269,7 @@ int	main(int ac, char **av)
 	if (count == 3)
 		printf("toupper: OK!\n");
 	else
-		printf("toupper: Error%d/3\n", count);
+		printf("toupper: Error:%d/3\n", count);
 
 	// * tolower
 	count = 0;
@@ -229,70 +285,80 @@ int	main(int ac, char **av)
 	if (count == 3)
 		printf("tolower: OK!\n");
 	else
-		printf("tolower: Error%d/3\n", count);
+		printf("tolower: Error:%d/3\n", count);
 
 	// * strchr
-	char	strchr1[] = "salut toi";
-	char	strchr2 = 't';
-	char	*strchr3 = strchr(strchr1, strchr2);
-	char	*strchr4 = ft_strchr(strchr1, strchr2);
-	if (strcmp(strchr3, strchr4) == 0)
+	char	strchr_str1[] = "salut toi";
+	char	strchr_char1 = 't';
+	char	*strchr_og = strchr(strchr_str1, strchr_char1);
+	char	*strchr_me = ft_strchr(strchr_str1, strchr_char1);
+	// printf("------------\nSTRCHR:\nOG: %s\nME: %s\n", strchr_og, strchr_me);
+	// printf("------------\n");
+	if (strcmp(strchr_og, strchr_me) == 0)
 		printf("strchr:  OK!\n");
 	else
 		printf("strchr:  Error\n");
 
 	// * strrchr
-	char	strrchr1[] = "salut toi";
-	char	strrchr2 = 't';
-	char	*strrchr3 = strrchr(strrchr1, strrchr2);
-	char	*strrchr4 = ft_strrchr(strrchr1, strrchr2);
-	if (strcmp(strrchr3, strrchr4) == 0)
+	char	strrchr_str1[] = "salut toi";
+	char	strrchr_char1 = 't';
+	char	*strrchr_og = strrchr(strrchr_str1, strrchr_char1);
+	char	*strrchr_me = ft_strrchr(strrchr_str1, strrchr_char1);
+	// printf("------------\nSTRRCHR:\nOG: %s\nME: %s\n", strrchr_og, strrchr_me);
+	// printf("------------\n");
+	if (strcmp(strrchr_og, strrchr_me) == 0)
 		printf("strrchr: OK!\n");
 	else
 		printf("strrchr: Error\n");
 
 	// * strncmp
-	char	strncmp1[] = "salut toi";
+	char	strncmp1[] = "salut moi";
 	char	strncmp2[] = "salut toi";
-	size_t	strncmp3 = 9;
-	size_t	strncmp4 = strncmp(strncmp1, strncmp2, strncmp3);
-	size_t	strncmp5 = ft_strncmp(strncmp1, strncmp2, strncmp3);
-	// printf("%ld | %ld\n", strncmp4, strncmp5);
-	if (strncmp4 == strncmp5)
+	size_t	strncmp_size = 9;
+	size_t	strncmp_og = strncmp(strncmp1, strncmp2, strncmp_size);
+	size_t	strncmp_me = ft_strncmp(strncmp1, strncmp2, strncmp_size);
+	// printf("------------\nSTRNCMP:\nOG: %ld\nME: %ld\n", strncmp_og, strncmp_me);
+	// printf("------------\n");
+	if (strncmp_og == strncmp_me)
 		printf("strncmp: OK!\n");
 	else
 		printf("strncmp: Error\n");
 
 	// * memchr
-	char	memchr1[] = "salut toi";
-	char	memchr2 = 't';
-	size_t	memchr3 = 10;
-	char	*memchr4 = memchr(memchr1, memchr2, memchr3);
-	char	*memchr5 = ft_memchr(memchr1, memchr2, memchr3);
-	if (memcmp(memchr4, memchr5, memchr3) == 0)
+	char	memchr_str1[] = "salut toi";
+	char	memchr_char1 = 't';
+	size_t	memchr_size = 10;
+	char	*memchr_og = memchr(memchr_str1, memchr_char1, memchr_size);
+	char	*memchr_me = ft_memchr(memchr_str1, memchr_char1, memchr_size);
+	// printf("------------\nMEMCHR:\nOG: %s\nME: %s\n", memchr_og, memchr_me);
+	// printf("------------\n");
+	if (ft_memcmp(memchr_og, memchr_me, memchr_size) == 0)
 		printf("memchr:  OK!\n");
 	else
 		printf("memchr:  Error\n");
 
 	// * memcmp
 	int		memcmp1[] = {9, 61, 64, 51, 64};
-	int		memcmp2[] = {9, 61, 64, 51, 64};
-	size_t	memcmp3 = 5 * sizeof(int);
-	int	memcmp4 = memcmp(memcmp1, memcmp2, memcmp3);
-	int	memcmp5 = ft_memcmp(memcmp1, memcmp2, memcmp3);
-	// printf("%d | %d\n", memcmp4, memcmp5);
-	if (memcmp4 == memcmp5)
+	int		memcmp2[] = {9, 61, 6, 51, 64};
+	size_t	memcmp_size = 5 * sizeof(int);
+	int		memcmp_og = memcmp(memcmp1, memcmp2, memcmp_size);
+	int		memcmp_me = ft_memcmp(memcmp1, memcmp2, memcmp_size);
+	// printf("------------\nMEMCMP:\nOG: %d\nME: %d\n", memcmp_og, memcmp_me);
+	// printf("------------\n");
+	if (memcmp_og == memcmp_me)
 		printf("memcmp:  OK!\n");
 	else
 		printf("memcmp:  Error\n");
 
 	// * strnstr
-	char	strnstr1[] = "salut salut comment ca va ajd";
-	char	strnstr2[] = "salut";
-	size_t	strnstr3 = 10;
-	char	*strnstr4 = strnstr(strnstr1, strnstr2, strnstr3);
-	char	*strnstr5 = ft_strnstr(strnstr1, strnstr2, strnstr3);
-	if (strcmp(strnstr4, strnstr5) == 0)
+	char	strnstr_big1[] = "salut salut comment ca va ajd";
+	char	strnstr_small1[] = "comment";
+	size_t	strnstr_len = 29;
+	char	*strnstr_og = strnstr(strnstr_big1, strnstr_small1, strnstr_len);
+	char	*strnstr_me = ft_strnstr(strnstr_big1, strnstr_small1, strnstr_len);
+	// printf("------------\nSTRNSTR:\nOG: %s\nME: %s\n", strnstr_og, strnstr_me);
+	// printf("------------\n");
+	if (strcmp(strnstr_og, strnstr_me) == 0)
 		printf("strnstr: OK!\n");
 	else
 		printf("strnstr: Error\n");
@@ -305,34 +371,50 @@ int	main(int ac, char **av)
 		printf("atoi:    Error\n");
 
 	// * calloc
-	char	*calloc1 = calloc(5, sizeof(char));
-	char	*calloc2 = ft_calloc(5, sizeof(char));
-	if (memcmp(calloc1, calloc2, 5) == 0)
+	char	*calloc_og = calloc(5, sizeof(char));
+	char	*calloc_me = ft_calloc(5, sizeof(char));
+	// printf("------------\nCALLOC:\n");
+	// printf("OG: ");
+	// while (i < 5)
+	// 	printf("%d ", calloc_og[i++]);
+	// printf("\n");
+	// printf("ME: ");
+	// i = 0;
+	// while (i < 5)
+	// 	printf("%d ", calloc_me[i++]);
+	// printf("\n------------\n");
+	if (memcmp(calloc_og, calloc_me, 5) == 0)
 		printf("calloc:  OK!\n");
 	else
 		printf("calloc:  Error\n");
 
 	// * strdup
 	char	strdup1[] = "salut";
-	char	*strdup2 = strdup(strdup1);
-	char	*strdup3 = ft_strdup(strdup1);
-	if (strcmp(strdup2, strdup3) == 0)
+	char	*strdup_og = strdup(strdup1);
+	char	*strdup_me = ft_strdup(strdup1);
+	// printf("------------\nSTRDUP:\nOG: %s\nME: %s\n", strdup_og, strdup_me);
+	// printf("------------\n");
+	if (strcmp(strdup_og, strdup_me) == 0)
 		printf("strdup:  OK!\n");
 	else
 		printf("strdup:  Error\n");
+
+
 
 	// * strjoin
 	char	join1[] = "salut";
 	char	join2[] = "nonon";
 	char	*join = ft_strjoin(join1, join2);
-	strcat(join1, join2);
+	strlcat(join1, join2, strlen(join1) + strlen(join2) + 1);
+	// printf("------------\nSTRDUP:\nCAT:  %s\nJOIN: %s\n", join1, join);
+	// printf("------------\n");
 	if(strcmp(join1, join) == 0)
 		printf("strjoin: OK!\n");
 	else
 		printf("strjoin: Error\n");
 
 	// * split
-	int		i = 0;
+	i = 0;
 	char	split_str[] = "salut comment tu vas";
 	int		sep = ' ';
 	int		words = count_words(split_str, sep);
@@ -343,5 +425,4 @@ int	main(int ac, char **av)
 		i++;
 	} */
 	free_tab(split, words);
-
 }
