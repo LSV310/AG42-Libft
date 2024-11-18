@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:13:46 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/18 18:01:31 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/19 00:02:55 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,23 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new;
+	t_list	**map;
 	t_list	*temp;
 
-	temp = NULL;
-	new = NULL;
+	*map = NULL;
 	while (lst)
 	{
-		if (temp)
-			temp = temp->next;
+		printf("%s\n", (char*)lst->content);
 		temp = ft_lstnew((*f)(lst->content));
 		if (!temp)
 		{
-			ft_lstclear(&new, (*del));
+			ft_lstclear(map, (*del));
 			return (NULL);
 		}
-		if (!new)
-			new = temp;
+		ft_lstadd_back(map, temp);
 		lst = lst->next;
 	}
-	return (new);
+	return (*map);
 }
 
 void	del_str(void *content)
@@ -56,14 +53,12 @@ void	*rot_1(void *content)
 
 int	main(void)
 {
-	t_list	**new;
-
 	t_list	*new1 = ft_lstnew("salut");
-	new = &new1;
 	t_list	*new2 = ft_lstnew("trkl");
 	t_list	*new3 = ft_lstnew("aurevoir");
-	ft_lstadd_back(new, new2);
-	ft_lstadd_back(new, new3);
-	printf("%s\n", (char *)ft_lstmap(new1, &rot_1, &del_str)->next->content);
+	ft_lstadd_back(&new1, new2);
+	ft_lstadd_back(&new1, new3);
+	printf("%s\n", (char*)new3->content);
+	printf("%s\n", (char *)ft_lstmap(new1, &rot_1, &del_str)->next->next->content);
 	return (0);
 }
