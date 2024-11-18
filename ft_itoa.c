@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:32:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:00 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:27:10 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,4 @@ char	*ft_itoa(int n)
 		nb /= 10;
 	}
 	return (str);
-}
-
-int	main(int ac, char **av)
-{
-	(void)ac;
-	printf("%s\n", ft_itoa(atoi(av[1])));
-	return (0);
 }

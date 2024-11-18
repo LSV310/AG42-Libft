@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:54:11 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/18 10:42:51 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/18 13:27:27 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	in_set(char const *set, int c)
 {
-	int	i;
 	while (*set)
 	{
 		if (*set == c)
@@ -49,10 +48,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	new[j] = 0;
 	return (new);
 }
-
-/* int	main(int ac, char **av)
-{
-	(void)ac;
-	printf("%s\n", ft_strtrim(av[1], av[2]));
-	return (0);
-} */
