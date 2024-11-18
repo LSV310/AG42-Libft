@@ -8,19 +8,19 @@ OBJ = $(SRCS:.c=.o)
 BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 BONUS_OBJ = $(BONUS_SRCS:.c=.o)
 
-# NAME = libft.a
-NAME = a.out
+NAME = libft.a
+# NAME = a.out
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
-#bonus: $(OBJ) $(BONUS_OBJ)
-#	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
-
 bonus: $(OBJ) $(BONUS_OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(BONUS_OBJ) -o $@ -g3
+	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+
+#bonus: $(OBJ) $(BONUS_OBJ)
+#	$(CC) $(CFLAGS) $(OBJ) $(BONUS_OBJ) -o $@ -g3
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
