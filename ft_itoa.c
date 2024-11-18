@@ -6,13 +6,13 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:32:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/18 11:27:10 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/18 16:01:57 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	get_size(unsigned int n)
+static int	get_size(unsigned int n)
 {
 	unsigned int	i;
 
