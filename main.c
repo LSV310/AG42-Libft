@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/15 16:54:37 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:30:29 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,16 @@ static void	*free_tab(char **tab, int nb)
 	return (NULL);
 }
 
+char	rot_2(unsigned int i, char c)
+{
+	return (c + 2);
+}
+
+void	rot_3(unsigned int i, char *s)
+{
+	*s = *s + 3;
+}
+
 int	main(int ac, char **av)
 {
 	(void)ac;
@@ -74,9 +84,9 @@ int	main(int ac, char **av)
 	if (isalpha(alpha3) == ft_isalpha(alpha3))
 		count++;
 	if (count == 3)
-		printf("isalpha: OK!\n");
+		printf("isalpha:  OK!\n");
 	else
-		printf("isalpha: Error:%d/3\n", count);
+		printf("isalpha:  Error:%d/3\n", count);
 
 	// * isdigit
 	count = 0;
@@ -87,9 +97,9 @@ int	main(int ac, char **av)
 	if (isdigit(digit2) == ft_isdigit(digit2))
 		count++;
 	if (count == 2)
-		printf("isdigit: OK!\n");
+		printf("isdigit:  OK!\n");
 	else
-		printf("isdigit: Error:%d/2\n", count);
+		printf("isdigit:  Error:%d/2\n", count);
 
 	// * isalnum
 	count = 0;
@@ -103,9 +113,9 @@ int	main(int ac, char **av)
 	if (isalnum(alnum3) == ft_isalnum(alnum3))
 		count++;
 	if (count == 3)
-		printf("isalnum: OK!\n");
+		printf("isalnum:  OK!\n");
 	else
-		printf("isalnum: Error:%d/3\n", count);
+		printf("isalnum:  Error:%d/3\n", count);
 
 	// * isascii
 	count = 0;
@@ -116,9 +126,9 @@ int	main(int ac, char **av)
 	if (isascii(ascii2) == ft_isascii(ascii2))
 		count++;
 	if (count == 2)
-		printf("isascii: OK!\n");
+		printf("isascii:  OK!\n");
 	else
-		printf("isascii: Error:%d/2\n", count);
+		printf("isascii:  Error:%d/2\n", count);
 
 	// * isprint
 	count = 0;
@@ -129,9 +139,9 @@ int	main(int ac, char **av)
 	if (isprint(print2) == ft_isprint(print2))
 		count++;
 	if (count == 2)
-		printf("isprint: OK!\n");
+		printf("isprint:  OK!\n");
 	else
-		printf("isprint: Error:%d/2\n", count);
+		printf("isprint:  Error:%d/2\n", count);
 
 	// * strlen
 	count = 0;
@@ -142,9 +152,9 @@ int	main(int ac, char **av)
 	if (strlen(strlen2) == ft_strlen(strlen2))
 		count++;
 	if (count == 2)
-		printf("strlen:  OK!\n");
+		printf("strlen:   OK!\n");
 	else
-		printf("strlen:  Error:%d/2\n", count);
+		printf("strlen:   Error:%d/2\n", count);
 
 	// * memset
 	i = 0;
@@ -162,9 +172,9 @@ int	main(int ac, char **av)
 	// 	printf("%c ", memset_me[i++]);
 	// printf("\n------------\n");
 	if (memcmp(memset_og, memset_me, 5) == 0)
-		printf("memset:  OK!\n");
+		printf("memset:   OK!\n");
 	else
-		printf("memset:  Error\n");
+		printf("memset:   Error\n");
 
 	// * bzero
 	i = 0;
@@ -184,9 +194,9 @@ int	main(int ac, char **av)
 	// 	printf("%d ", bzero2[i++]);
 	// printf("\n------------\n");
 	if (memcmp(bzero1, bzero2, 5 * sizeof(int)) == 0)
-		printf("bzero:   OK!\n");
+		printf("bzero:    OK!\n");
 	else
-		printf("bzero:   Error\n");
+		printf("bzero:    Error\n");
 
 	// * memcpy
 	i = 0;
@@ -206,9 +216,9 @@ int	main(int ac, char **av)
 	// 	printf("%c ", memcpy_dest2[i++]);
 	// printf("\n------------\n");
 	if (memcmp(memcpy_dest1, memcpy_dest2, 5) == 0)
-		printf("memcpy:  OK!\n");
+		printf("memcpy:   OK!\n");
 	else
-		printf("memcpy:  Error\n");
+		printf("memcpy:   Error\n");
 
 	// * memmove
 	i = 0;
@@ -228,9 +238,9 @@ int	main(int ac, char **av)
 	// 	printf("%c ", memmove_dest2[i++]);
 	// printf("\n------------\n");
 	if (memcmp(memmove_dest1, memmove_dest2, 5) == 0)
-		printf("memmove: OK!\n");
+		printf("memmove:  OK!\n");
 	else
-		printf("memmove: Error\n");
+		printf("memmove:  Error\n");
 
 	// * strlcpy
 	char	strlcpy_src1[] = "salut";
@@ -241,9 +251,9 @@ int	main(int ac, char **av)
 	// printf("------------\nSTRLCPY:\nOG: %s | %ld\nME: %s | %ld\n", strlcpy_dest1, strlcpy_og, strlcpy_dest2, strlcpy_me);
 	// printf("------------\n");
 	if (strcmp(strlcpy_dest1, strlcpy_dest2) == 0 && strlcpy_og == strlcpy_me)
-		printf("strlcpy: OK!\n");
+		printf("strlcpy:  OK!\n");
 	else
-		printf("strlcpy: Error\n");
+		printf("strlcpy:  Error\n");
 
 	// * strlcat
 	char	strlcat_src1[6] = "salut";
@@ -254,9 +264,9 @@ int	main(int ac, char **av)
 	// printf("------------\nSTRLCAT:\nOG: %s | %ld\nME: %s | %ld\n", strlcat_dest1, strlcat_og, strlcat_dest2, strlcat_me);
 	// printf("------------\n");
 	if (strcmp(strlcat_dest1, strlcat_dest2) == 0 && strlcat_og == strlcat_me)
-		printf("strlcat: OK!\n");
+		printf("strlcat:  OK!\n");
 	else
-		printf("strlcat: Error\n");
+		printf("strlcat:  Error\n");
 
 	// * toupper
 	count = 0;
@@ -270,9 +280,9 @@ int	main(int ac, char **av)
 	if (toupper(toupper3) == ft_toupper(toupper3))
 		count++;
 	if (count == 3)
-		printf("toupper: OK!\n");
+		printf("toupper:  OK!\n");
 	else
-		printf("toupper: Error:%d/3\n", count);
+		printf("toupper:  Error:%d/3\n", count);
 
 	// * tolower
 	count = 0;
@@ -286,9 +296,9 @@ int	main(int ac, char **av)
 	if (tolower(tolower3) == ft_tolower(tolower3))
 		count++;
 	if (count == 3)
-		printf("tolower: OK!\n");
+		printf("tolower:  OK!\n");
 	else
-		printf("tolower: Error:%d/3\n", count);
+		printf("tolower:  Error:%d/3\n", count);
 
 	// * strchr
 	char	strchr_str1[] = "salut toi";
@@ -298,9 +308,9 @@ int	main(int ac, char **av)
 	// printf("------------\nSTRCHR:\nOG: %s\nME: %s\n", strchr_og, strchr_me);
 	// printf("------------\n");
 	if (strcmp(strchr_og, strchr_me) == 0)
-		printf("strchr:  OK!\n");
+		printf("strchr:   OK!\n");
 	else
-		printf("strchr:  Error\n");
+		printf("strchr:   Error\n");
 
 	// * strrchr
 	char	strrchr_str1[] = "salut toi";
@@ -310,9 +320,9 @@ int	main(int ac, char **av)
 	// printf("------------\nSTRRCHR:\nOG: %s\nME: %s\n", strrchr_og, strrchr_me);
 	// printf("------------\n");
 	if (strcmp(strrchr_og, strrchr_me) == 0)
-		printf("strrchr: OK!\n");
+		printf("strrchr:  OK!\n");
 	else
-		printf("strrchr: Error\n");
+		printf("strrchr:  Error\n");
 
 	// * strncmp
 	char	strncmp1[] = "salut moi";
@@ -323,9 +333,9 @@ int	main(int ac, char **av)
 	// printf("------------\nSTRNCMP:\nOG: %ld\nME: %ld\n", strncmp_og, strncmp_me);
 	// printf("------------\n");
 	if (strncmp_og == strncmp_me)
-		printf("strncmp: OK!\n");
+		printf("strncmp:  OK!\n");
 	else
-		printf("strncmp: Error\n");
+		printf("strncmp:  Error\n");
 
 	// * memchr
 	char	memchr_str1[] = "salut toi";
@@ -336,9 +346,9 @@ int	main(int ac, char **av)
 	// printf("------------\nMEMCHR:\nOG: %s\nME: %s\n", memchr_og, memchr_me);
 	// printf("------------\n");
 	if (ft_memcmp(memchr_og, memchr_me, memchr_size) == 0)
-		printf("memchr:  OK!\n");
+		printf("memchr:   OK!\n");
 	else
-		printf("memchr:  Error\n");
+		printf("memchr:   Error\n");
 
 	// * memcmp
 	int		memcmp1[] = {9, 61, 64, 51, 64};
@@ -349,9 +359,9 @@ int	main(int ac, char **av)
 	// printf("------------\nMEMCMP:\nOG: %d\nME: %d\n", memcmp_og, memcmp_me);
 	// printf("------------\n");
 	if (memcmp_og == memcmp_me)
-		printf("memcmp:  OK!\n");
+		printf("memcmp:   OK!\n");
 	else
-		printf("memcmp:  Error\n");
+		printf("memcmp:   Error\n");
 
 	// * strnstr
 	char	strnstr_big1[] = "salut salut comment ca va ajd";
@@ -362,16 +372,16 @@ int	main(int ac, char **av)
 	// printf("------------\nSTRNSTR:\nOG: %s\nME: %s\n", strnstr_og, strnstr_me);
 	// printf("------------\n");
 	if (strcmp(strnstr_og, strnstr_me) == 0)
-		printf("strnstr: OK!\n");
+		printf("strnstr:  OK!\n");
 	else
-		printf("strnstr: Error\n");
+		printf("strnstr:  Error\n");
 
 	// * atoi
 	char	atoi1[] = "  \t \n -2147483648";
 	if (atoi(atoi1) == ft_atoi(atoi1))
-		printf("atoi:    OK!\n");
+		printf("atoi:     OK!\n");
 	else
-		printf("atoi:    Error\n");
+		printf("atoi:     Error\n");
 
 	// * calloc
 	i = 0;
@@ -388,9 +398,9 @@ int	main(int ac, char **av)
 	// 	printf("%d ", calloc_me[i++]);
 	// printf("\n------------\n");
 	if (memcmp(calloc_og, calloc_me, 5) == 0)
-		printf("calloc:  OK!\n");
+		printf("calloc:   OK!\n");
 	else
-		printf("calloc:  Error\n");
+		printf("calloc:   Error\n");
 
 	// * strdup
 	char	strdup1[] = "salut";
@@ -399,7 +409,7 @@ int	main(int ac, char **av)
 	// printf("------------\nSTRDUP:\nOG: %s\nME: %s\n", strdup_og, strdup_me);
 	// printf("------------\n");
 	if (strcmp(strdup_og, strdup_me) == 0)
-		printf("strdup:  OK!\n");
+		printf("strdup:   OK!\n");
 	else
 		printf("strdup:  Error\n");
 
@@ -420,20 +430,88 @@ int	main(int ac, char **av)
 	// printf("------------\nSTRDUP:\nCAT:  %s\nJOIN: %s\n", join1, join);
 	// printf("------------\n");
 	if(strcmp(join1, join) == 0)
-		printf("strjoin: OK!\n");
+		printf("strjoin:  OK!\n");
 	else
-		printf("strjoin: Error\n");
+		printf("strjoin:  Error\n");
+
+	// * ft_strtrim
+	char	trim[] = "xxbsalutzz";
+	char	set[] = "zxb";
+	char	trim_result[] = "salut";
+	char	*strtrim = ft_strtrim(trim, set);
+	// printf("------------\nSTRTRIM: %s\n", strtrim);
+	// printf("------------\n");
+	if (strcmp(strtrim, trim_result) == 0)
+		printf("strtrim:  OK!\n");
+	else
+		printf("strtrim:  Error\n");
 
 	// * split
 	i = 0;
+	count = 0;
 	char	split_str[] = "salut comment tu vas";
 	int		sep = ' ';
 	int		words = count_words(split_str, sep);
+	char	*split_result[4] = {"salut", "comment", "tu", "vas"};
 	char	**split = ft_split(split_str, sep);
-	while (i <= words)
+	while (i < words)
 	{
-		printf("%d: %s\n", i, split[i]);
+		if (strcmp(split[i], split_result[i]) == 0)
+			count++;
+		// printf("%d: %s\n", i, split[i]);
 		i++;
 	}
+	// printf("%d: %s\n", i, split[i]);
+	if (count == words)
+		printf("split:    OK!\n");
+	else
+		printf("split:    Error\n");
 	free_tab(split, words);
+
+	// * ft_itoa
+	int		itoa_nbr = -2147483648;
+	char	itoa_result[] = "-2147483648";
+	char	*itoa = ft_itoa(itoa_nbr);
+	// printf("------------\nITOA: %s\n", itoa);
+	// printf("------------\n");
+	if (strcmp(itoa, itoa_result) == 0)
+		printf("itoa:     OK!\n");
+	else
+		printf("itoa:     Error\n");
+
+	// * ft_strmapi
+	char	map[] = "abcd";
+	char	map_result[] = "cdef";
+	char	*strmapi = ft_strmapi(map, &rot_2);
+	// printf("------------\nSTRMAPI: %s\n", strmapi);
+	// printf("------------\n");
+	if (strcmp(strmapi, map_result) == 0)
+		printf("strmapi:  OK!\n");
+	else
+		printf("strmapi:  Error\n");
+
+	// * ft_striteri
+	char	striteri[] = "abcd";
+	char	iteri_result[] = "defg";
+	ft_striteri(striteri, &rot_3);
+	// printf("------------\nSTRITERI: %s\n", striteri);
+	// printf("------------\n");
+	if (strcmp(striteri, iteri_result) == 0)
+		printf("striteri: OK!\n");
+	else
+		printf("striteri: Error\n");
+
+	// * ft_putchar_fd
+	// ft_putchar_fd('c', 1);
+	// ft_putchar_fd('\n', 1);
+
+	// * ft_putstr_fd
+	// ft_putstr_fd("salut\n", 1);
+
+	// * ft_putendl_fd
+	// ft_putendl_fd("salut", 1);
+
+	// * ft_putnbr_fd
+	// ft_putnbr_fd(-2147483648, 1);
+	// ft_putchar_fd('\n', 1);
 }
