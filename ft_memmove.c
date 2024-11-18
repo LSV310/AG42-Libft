@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:37:12 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/15 09:25:31 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/15 12:04:42 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
+	if (!dest && !src)
+		return (NULL);
 	if (src > dest)
 	{
 		while (i < n)

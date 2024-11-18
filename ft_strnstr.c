@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:45:13 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/13 16:14:43 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/15 12:50:09 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	lsize = ft_strlen(little);
 	if (lsize == 0)
 		return ((char *)big);
-	while (i + lsize < len + 1 && big[i])
+	while (big[i] && i + lsize - 1 < len)
 	{
 		if (ft_strncmp(big + i, little, lsize) == 0)
 			return ((char *)big + i);

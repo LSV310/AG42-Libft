@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/15 10:07:05 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/15 16:54:37 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ int	main(int ac, char **av)
 		printf("memset:  Error\n");
 
 	// * bzero
+	i = 0;
 	int		bzero1[] = {9, 61, 64, 51, 64};
 	int		bzero2[5];
 	memcpy(bzero2, bzero1, 5 * sizeof(int));
@@ -188,6 +189,7 @@ int	main(int ac, char **av)
 		printf("bzero:   Error\n");
 
 	// * memcpy
+	i = 0;
 	char	memcpy_src1[] = "salut";
 	char	memcpy_dest1[5];
 	char	memcpy_dest2[5];
@@ -209,6 +211,7 @@ int	main(int ac, char **av)
 		printf("memcpy:  Error\n");
 
 	// * memmove
+	i = 0;
 	char	memmove_src1[] = "salut";
 	char	memmove_dest1[5];
 	char	memmove_dest2[5];
@@ -371,6 +374,7 @@ int	main(int ac, char **av)
 		printf("atoi:    Error\n");
 
 	// * calloc
+	i = 0;
 	char	*calloc_og = calloc(5, sizeof(char));
 	char	*calloc_me = ft_calloc(5, sizeof(char));
 	// printf("------------\nCALLOC:\n");
@@ -399,7 +403,14 @@ int	main(int ac, char **av)
 	else
 		printf("strdup:  Error\n");
 
-
+	// * substr
+	char			substr_str[] = "tripouille";
+	unsigned int	substr_start = 0;
+	size_t			substr_len = 42000;
+	char			*substr = ft_substr(substr_str, substr_start, substr_len);
+	printf("------------\n");
+	printf("SUBSTR: %s\n", substr);
+	printf("------------\n");
 
 	// * strjoin
 	char	join1[] = "salut";
@@ -419,10 +430,10 @@ int	main(int ac, char **av)
 	int		sep = ' ';
 	int		words = count_words(split_str, sep);
 	char	**split = ft_split(split_str, sep);
-	/* while (i <= words)
+	while (i <= words)
 	{
 		printf("%d: %s\n", i, split[i]);
 		i++;
-	} */
+	}
 	free_tab(split, words);
 }
