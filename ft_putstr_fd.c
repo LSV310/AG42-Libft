@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:34:26 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/18 12:27:40 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:17:46 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
+	if (!s)
+		return ;
 	i = 0;
 	while (s[i])
 		ft_putchar_fd(s[i++], fd);

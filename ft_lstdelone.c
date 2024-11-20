@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:44:55 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/18 15:47:45 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:55:41 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
+	if (!lst)
+		return ;
 	(*del)(lst->content);
 	free(lst);
 }

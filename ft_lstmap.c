@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:13:46 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/20 12:46:47 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:56:33 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	*alloc_fail(t_list *map, void *content, void (*del)(void *))
 {
-	free(content);
+	if (content)
+		free(content);
 	if (map)
 		ft_lstclear(&map, (*del));
 	return (NULL);
