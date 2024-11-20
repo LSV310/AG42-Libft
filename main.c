@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/20 12:55:22 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:04:18 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,20 @@ void	*upper_lst(void *content)
 	return (str);
 }
 
-void	print_elem(void *content)
+void	print_lower(void *content)
 {
-	printf("%s\n", (char *)content);
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = ft_strdup((char *)content);
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
+	printf("%s\n", str);
+	free(str);
 }
 
 void	print_lst(t_list *lst)
@@ -656,7 +667,7 @@ int	main(int ac, char **av)
 	iter_node1->next = iter_node2;
 	iter_node2->next = iter_node3;
 	printf("------------\nLSTITER:\n");
-	ft_lstiter(iter_node1, &print_elem);
+	ft_lstiter(iter_node1, &print_lower);
 	printf("------------\n");
 	ft_lstclear(&iter_node1, (&del_str));
 
@@ -674,9 +685,9 @@ int	main(int ac, char **av)
 		ft_lstclear(&map_node1, (&del_str));
 		return (0);
 	}
-	printf("------------\nLSTMAP: \n");
-	print_lst(lstmap);
-	printf("------------\n");
+	// printf("------------\nLSTMAP: \n");
+	// print_lst(lstmap);
+	// printf("------------\n");
 	ft_lstclear(&map_node1, (&del_str));
 	ft_lstclear(&lstmap, (&del_str));
 
