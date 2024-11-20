@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/20 12:23:53 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 12:55:22 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,18 @@ void	*upper_lst(void *content)
 	return (str);
 }
 
-void	ft_print_result(t_list *elem)
+void	print_elem(void *content)
 {
-	int		len;
+	printf("%s\n", (char *)content);
+}
 
-	len = 0;
-	while (((char *)elem->content)[len])
-		len++;
-	write(1, ((char *)elem->content), len);
-	write(1, "\n", 1);
+void	print_lst(t_list *lst)
+{
+	while (lst)
+	{
+		printf("%s\n", (char *)lst->content);
+		lst = lst->next;
+	}
 }
 
 int	main(int ac, char **av)
@@ -579,7 +582,8 @@ int	main(int ac, char **av)
 	t_list	*addfront_node2 = ft_lstnew(add_front_content2);
 	ft_lstadd_front(&add_front, addfront_node1);
 	ft_lstadd_front(&add_front, addfront_node2);
-	// printf("------------\nADD_FRONT: \n%s\n%s\n", (char *)add_front->content, (char *)add_front->next->content);
+	// printf("------------\nADD_FRONT: \n");
+	// print_lst(add_front);
 	// printf("------------\n");
 	if (strcmp(add_front_content2, (char *)add_front->content) == 0
 		&& add_front->next->content == add_front_content1 && add_front->next->next == NULL)
@@ -608,7 +612,8 @@ int	main(int ac, char **av)
 	ft_lstadd_back(&lstlast_node1, lstlast_node2);
 	ft_lstadd_back(&lstlast_node1, lstlast_node3);
 	t_list	*lstlast = ft_lstlast(lstlast_node1);
-	// printf("------------\nLSTLAST: %s\n", (char *)lstlast->content);
+	// printf("------------\nLSTLAST: \n");
+	// print_lst(lstlast_node1);
 	// printf("------------\n");
 	if (strcmp((char *)lstlast_node3->content, (char *)lstlast->content) == 0)
 		printf("lstlast:  OK!\n");
@@ -623,7 +628,8 @@ int	main(int ac, char **av)
 	t_list	*addback_node2 = ft_lstnew(add_back_content2);
 	ft_lstadd_back(&add_back, addback_node1);
 	ft_lstadd_back(&add_back, addback_node2);
-	// printf("------------\nADD_BACK: \n%s\n%s\n", (char *)add_back->content, (char *)add_back->next->content);
+	// printf("------------\nADD_BACK: \n");
+	// print_lst(add_back);
 	// printf("------------\n");
 	if (strcmp(add_back_content1, (char *)add_back->content) == 0
 		&& strcmp(add_back_content2, (char *)add_back->next->content) == 0
@@ -642,6 +648,36 @@ int	main(int ac, char **av)
 	ft_lstclear(&add_back, &del_str);
 
 	// * lstiter
-	ft_lstiter();
+	i = 0;
+	t_list		*lstiter;
+	t_list		*iter_node1 = ft_lstnew(ft_strdup("BonJour"));
+	t_list		*iter_node2 = ft_lstnew(ft_strdup("OuuaiII"));
+	t_list		*iter_node3 = ft_lstnew(ft_strdup("aurevoir"));
+	iter_node1->next = iter_node2;
+	iter_node2->next = iter_node3;
+	printf("------------\nLSTITER:\n");
+	ft_lstiter(iter_node1, &print_elem);
+	printf("------------\n");
+	ft_lstclear(&iter_node1, (&del_str));
+
+	// * lstmap
+	i = 0;
+	t_list		*lstmap;
+	t_list		*map_node1 = ft_lstnew(ft_strdup("bonjour"));
+	t_list		*map_node2 = ft_lstnew(ft_strdup("salUt"));
+	t_list		*map_node3 = ft_lstnew(ft_strdup("aurevoir"));
+	map_node1->next = map_node2;
+	map_node2->next = map_node3;
+	lstmap = ft_lstmap(map_node1, &upper_lst, &del_str);
+	if (!lstmap)
+	{
+		ft_lstclear(&map_node1, (&del_str));
+		return (0);
+	}
+	printf("------------\nLSTMAP: \n");
+	print_lst(lstmap);
+	printf("------------\n");
+	ft_lstclear(&map_node1, (&del_str));
+	ft_lstclear(&lstmap, (&del_str));
 
 }

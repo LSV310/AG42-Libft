@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:13:46 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/20 11:39:28 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 12:46:47 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (map);
 }
-
-/*int	main(void)
-{
-	t_list		*list;
-	t_list		*elem = ft_lstnew(ft_strdup("bonjour"));
-	t_list		*elem2 = ft_lstnew(ft_strdup("coucou"));
-	t_list		*elem3 = ft_lstnew(ft_strdup("aurevoir"));
-
-	elem->next = elem2;
-	elem2->next = elem3;
-	if (!(list = ft_lstmap(elem, &upper_lst, &del_str)))
-	{
-		ft_lstclear(&elem, (&del_str));
-		return (0);
-	}
-	// int i;
-	//i = 0;
-	//ft_print_result(list);
-	//while (list->next)
-	//{
-	//	list = list->next;
-	//	ft_print_result(list);
-	//	i++;
-	//}
-	ft_lstclear(&elem, (&del_str));
-	ft_lstclear(&list, (&del_str));
-	return (0);
-}*/
