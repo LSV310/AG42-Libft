@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/19 14:36:48 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 10:48:34 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,10 +417,16 @@ int	main(int ac, char **av)
 	char			*substr_str = ft_strdup("0123456789");
 	unsigned int	substr_start = 9;
 	size_t			substr_len = 10;
+	char			*result = "9";
 	char			*substr = ft_substr(substr_str, substr_start, substr_len);
-	printf("------------\n");
-	printf("SUBSTR: %s\n", substr);
-	printf("------------\n");
+	if (strcmp(substr, result) == 0)
+		printf("substr:   OK!\n");
+	else
+		printf("substr:  Error\n");
+	// printf("------------\n");
+	// printf("SUBSTR: %s\n", substr);
+	// printf("------------\n");
+
 	free(substr);
 
 	// * strjoin

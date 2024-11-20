@@ -18,8 +18,8 @@ $(NAME): $(OBJ)
 bonus: $(OBJ) $(BONUS_OBJ)
 	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
 
-#test: $(OBJ) $(BONUS_OBJ) main.o
-#	$(CC) $(CFLAGS) $(OBJ) $(BONUS_OBJ) main.o -o $@ -lbsd
+test: $(OBJ) $(BONUS_OBJ) main.o
+	$(CC) $(CFLAGS) $(OBJ) $(BONUS_OBJ) main.o -o $@ -lbsd
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
