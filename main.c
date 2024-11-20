@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/20 13:04:18 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:13:45 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -483,7 +483,7 @@ int	main(int ac, char **av)
 	char	join2[] = "nonon";
 	char	*strjoin = ft_strjoin(join1, join2);
 	strlcat(join1, join2, strlen(join1) + strlen(join2) + 1);
-	// printf("------------\nSTRDUP:\nCAT:  %s\nJOIN: %s\n", join1, join);
+	// printf("------------\nSTRJOIN:\nCAT:  %s\nSTR: %s\n", join1, strjoin);
 	// printf("------------\n");
 	if(strcmp(join1, strjoin) == 0)
 		printf("strjoin:  OK!\n");
@@ -562,18 +562,26 @@ int	main(int ac, char **av)
 		printf("striteri: Error\n");
 
 	// * putchar_fd
+	// printf("------------\nPUTCHAR_FD:\n");
 	// ft_putchar_fd('c', 1);
 	// ft_putchar_fd('\n', 1);
+	// printf("------------\n");
 
 	// * putstr_fd
+	// printf("------------\nPUTSTRFD:\n");
 	// ft_putstr_fd("salut\n", 1);
+	// printf("------------\n");
 
 	// * putendl_fd
+	// printf("------------\nPUTENDL_FD:\n");
 	// ft_putendl_fd("salut", 1);
+	// printf("------------\n");
 
 	// * putnbr_fd
+	// printf("------------\nPUTNBR_FD:\n");
 	// ft_putnbr_fd(-2147483648, 1);
 	// ft_putchar_fd('\n', 1);
+	// printf("------------\n");
 
 	// * lstnew
 	char	*new_content = ft_strdup("salut");
@@ -593,7 +601,7 @@ int	main(int ac, char **av)
 	t_list	*addfront_node2 = ft_lstnew(add_front_content2);
 	ft_lstadd_front(&add_front, addfront_node1);
 	ft_lstadd_front(&add_front, addfront_node2);
-	// printf("------------\nADD_FRONT: \n");
+	// printf("------------\nADD_FRONT:\n");
 	// print_lst(add_front);
 	// printf("------------\n");
 	if (strcmp(add_front_content2, (char *)add_front->content) == 0
@@ -623,7 +631,7 @@ int	main(int ac, char **av)
 	ft_lstadd_back(&lstlast_node1, lstlast_node2);
 	ft_lstadd_back(&lstlast_node1, lstlast_node3);
 	t_list	*lstlast = ft_lstlast(lstlast_node1);
-	// printf("------------\nLSTLAST: \n");
+	// printf("------------\nLSTLAST:\n");
 	// print_lst(lstlast_node1);
 	// printf("------------\n");
 	if (strcmp((char *)lstlast_node3->content, (char *)lstlast->content) == 0)
@@ -639,7 +647,7 @@ int	main(int ac, char **av)
 	t_list	*addback_node2 = ft_lstnew(add_back_content2);
 	ft_lstadd_back(&add_back, addback_node1);
 	ft_lstadd_back(&add_back, addback_node2);
-	// printf("------------\nADD_BACK: \n");
+	// printf("------------\nADD_BACK:\n");
 	// print_lst(add_back);
 	// printf("------------\n");
 	if (strcmp(add_back_content1, (char *)add_back->content) == 0
@@ -666,17 +674,19 @@ int	main(int ac, char **av)
 	t_list		*iter_node3 = ft_lstnew(ft_strdup("aurevoir"));
 	iter_node1->next = iter_node2;
 	iter_node2->next = iter_node3;
-	printf("------------\nLSTITER:\n");
-	ft_lstiter(iter_node1, &print_lower);
-	printf("------------\n");
+	// printf("------------\nLSTITER:\n");
+	// ft_lstiter(iter_node1, &print_lower);
+	// printf("------------\n");
 	ft_lstclear(&iter_node1, (&del_str));
 
 	// * lstmap
 	i = 0;
+	count = 0;
 	t_list		*lstmap;
-	t_list		*map_node1 = ft_lstnew(ft_strdup("bonjour"));
+	t_list		*map_node1 = ft_lstnew(ft_strdup("bONJOur"));
 	t_list		*map_node2 = ft_lstnew(ft_strdup("salUt"));
 	t_list		*map_node3 = ft_lstnew(ft_strdup("aurevoir"));
+	char		*lstmap_result[3] = {"BONJOUR", "SALUT", "AUREVOIR"};
 	map_node1->next = map_node2;
 	map_node2->next = map_node3;
 	lstmap = ft_lstmap(map_node1, &upper_lst, &del_str);
@@ -685,9 +695,20 @@ int	main(int ac, char **av)
 		ft_lstclear(&map_node1, (&del_str));
 		return (0);
 	}
-	// printf("------------\nLSTMAP: \n");
+	while (i < 3)
+	{
+		if (strcmp(lstmap_result[i], (char *)lstmap->content) == 0)
+			count++;
+		i++;
+		lstmap = lstmap->next;
+	}
+	// printf("------------\nLSTMAP:\n");
 	// print_lst(lstmap);
 	// printf("------------\n");
+	if (count == 3)
+		printf("lstmap:   OK!\n");
+	else
+		printf("lstmap:   Error\n");
 	ft_lstclear(&map_node1, (&del_str));
 	ft_lstclear(&lstmap, (&del_str));
 
