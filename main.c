@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:02:33 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/20 10:48:34 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/20 12:23:53 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,37 @@ char	rot_2(unsigned int i, char c)
 void	rot_3(unsigned int i, char *s)
 {
 	*s = *s + 3;
+}
+
+void	del_str(void *content)
+{
+	free(content);
+}
+
+void	*upper_lst(void *content)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = ft_strdup((char *)content);
+	while (str[i])
+	{
+		str[i] = ft_toupper(str[i]);
+		i++;
+	}
+	return (str);
+}
+
+void	ft_print_result(t_list *elem)
+{
+	int		len;
+
+	len = 0;
+	while (((char *)elem->content)[len])
+		len++;
+	write(1, ((char *)elem->content), len);
+	write(1, "\n", 1);
 }
 
 int	main(int ac, char **av)
@@ -401,6 +432,8 @@ int	main(int ac, char **av)
 		printf("calloc:   OK!\n");
 	else
 		printf("calloc:   Error\n");
+	free(calloc_og);
+	free(calloc_me);
 
 	// * strdup
 	char	strdup1[] = "salut";
@@ -412,6 +445,8 @@ int	main(int ac, char **av)
 		printf("strdup:   OK!\n");
 	else
 		printf("strdup:  Error\n");
+	free(strdup_og);
+	free(strdup_me);
 
 	// * substr
 	char			*substr_str = ft_strdup("0123456789");
@@ -419,29 +454,30 @@ int	main(int ac, char **av)
 	size_t			substr_len = 10;
 	char			*result = "9";
 	char			*substr = ft_substr(substr_str, substr_start, substr_len);
+	// printf("------------\n");
+	// printf("SUBSTR: %s\n", substr);
+	// printf("------------\n");
 	if (strcmp(substr, result) == 0)
 		printf("substr:   OK!\n");
 	else
 		printf("substr:  Error\n");
-	// printf("------------\n");
-	// printf("SUBSTR: %s\n", substr);
-	// printf("------------\n");
-
+	free(substr_str);
 	free(substr);
 
 	// * strjoin
 	char	join1[] = "salut";
 	char	join2[] = "nonon";
-	char	*join = ft_strjoin(join1, join2);
+	char	*strjoin = ft_strjoin(join1, join2);
 	strlcat(join1, join2, strlen(join1) + strlen(join2) + 1);
 	// printf("------------\nSTRDUP:\nCAT:  %s\nJOIN: %s\n", join1, join);
 	// printf("------------\n");
-	if(strcmp(join1, join) == 0)
+	if(strcmp(join1, strjoin) == 0)
 		printf("strjoin:  OK!\n");
 	else
 		printf("strjoin:  Error\n");
+	free(strjoin);
 
-	// * ft_strtrim
+	// * strtrim
 	char	trim[] = "xxbsalutzz";
 	char	set[] = "zxb";
 	char	trim_result[] = "salut";
@@ -452,6 +488,7 @@ int	main(int ac, char **av)
 		printf("strtrim:  OK!\n");
 	else
 		printf("strtrim:  Error\n");
+	free(strtrim);
 
 	// * split
 	i = 0;
@@ -475,7 +512,7 @@ int	main(int ac, char **av)
 		printf("split:    Error\n");
 	free_tab(split, words);
 
-	// * ft_itoa
+	// * itoa
 	int		itoa_nbr = -2147483648;
 	char	itoa_result[] = "-2147483648";
 	char	*itoa = ft_itoa(itoa_nbr);
@@ -485,8 +522,9 @@ int	main(int ac, char **av)
 		printf("itoa:     OK!\n");
 	else
 		printf("itoa:     Error\n");
+	free(itoa);
 
-	// * ft_strmapi
+	// * strmapi
 	char	map[] = "abcd";
 	char	map_result[] = "cdef";
 	char	*strmapi = ft_strmapi(map, &rot_2);
@@ -496,8 +534,9 @@ int	main(int ac, char **av)
 		printf("strmapi:  OK!\n");
 	else
 		printf("strmapi:  Error\n");
+	free(strmapi);
 
-	// * ft_striteri
+	// * striteri
 	char	striteri[] = "abcd";
 	char	iteri_result[] = "defg";
 	ft_striteri(striteri, &rot_3);
@@ -508,17 +547,101 @@ int	main(int ac, char **av)
 	else
 		printf("striteri: Error\n");
 
-	// * ft_putchar_fd
+	// * putchar_fd
 	// ft_putchar_fd('c', 1);
 	// ft_putchar_fd('\n', 1);
 
-	// * ft_putstr_fd
+	// * putstr_fd
 	// ft_putstr_fd("salut\n", 1);
 
-	// * ft_putendl_fd
+	// * putendl_fd
 	// ft_putendl_fd("salut", 1);
 
-	// * ft_putnbr_fd
+	// * putnbr_fd
 	// ft_putnbr_fd(-2147483648, 1);
 	// ft_putchar_fd('\n', 1);
+
+	// * lstnew
+	char	*new_content = ft_strdup("salut");
+	t_list	*lstnew = ft_lstnew(new_content);
+	// printf("------------\nLSTNEW: %s\n", (char *)lstnew->content);
+	// printf("------------\n");
+	if (strcmp(new_content, (char *)lstnew->content) == 0 && lstnew->next == NULL)
+		printf("lstnew:   OK!\n");
+	else
+		printf("lstnew:   Error\n");
+
+	// * lstadd_front
+	t_list	*add_front = NULL;
+	char	*add_front_content1 = ft_strdup("bonjour");
+	char	*add_front_content2 = ft_strdup("aurevoir");
+	t_list	*addfront_node1 = ft_lstnew(add_front_content1);
+	t_list	*addfront_node2 = ft_lstnew(add_front_content2);
+	ft_lstadd_front(&add_front, addfront_node1);
+	ft_lstadd_front(&add_front, addfront_node2);
+	// printf("------------\nADD_FRONT: \n%s\n%s\n", (char *)add_front->content, (char *)add_front->next->content);
+	// printf("------------\n");
+	if (strcmp(add_front_content2, (char *)add_front->content) == 0
+		&& add_front->next->content == add_front_content1 && add_front->next->next == NULL)
+		printf("add_front:OK!\n");
+	else
+		printf("add_front:Error\n");
+
+	// * lstsize
+	t_list	*lstsize_node1 = ft_lstnew(ft_strdup("abcd"));
+	t_list	*lstsize_node2= ft_lstnew(ft_strdup("efgh"));
+	t_list	*lstsize_node3 = ft_lstnew(ft_strdup("ijkl"));
+	ft_lstadd_back(&lstsize_node1, lstsize_node2);
+	ft_lstadd_back(&lstsize_node1, lstsize_node3);
+	int		lstsize = ft_lstsize(lstsize_node1);
+	// printf("------------\nLSTSIZE: %d\n", lstsize);
+	// printf("------------\n");
+	if (lstsize == 3)
+		printf("lstsize:  OK!\n");
+	else
+		printf("lstsize:  Error\n");
+
+	// * lstlast
+	t_list	*lstlast_node1 = ft_lstnew(ft_strdup("abcd"));
+	t_list	*lstlast_node2= ft_lstnew(ft_strdup("efgh"));
+	t_list	*lstlast_node3 = ft_lstnew(ft_strdup("ijkl"));
+	ft_lstadd_back(&lstlast_node1, lstlast_node2);
+	ft_lstadd_back(&lstlast_node1, lstlast_node3);
+	t_list	*lstlast = ft_lstlast(lstlast_node1);
+	// printf("------------\nLSTLAST: %s\n", (char *)lstlast->content);
+	// printf("------------\n");
+	if (strcmp((char *)lstlast_node3->content, (char *)lstlast->content) == 0)
+		printf("lstlast:  OK!\n");
+	else
+		printf("lstlast:  Error\n");
+
+	// * lstadd_back
+	t_list	*add_back = NULL;
+	char	*add_back_content1 = ft_strdup("bonjour");
+	char	*add_back_content2 = ft_strdup("aurevoir");
+	t_list	*addback_node1 = ft_lstnew(add_back_content1);
+	t_list	*addback_node2 = ft_lstnew(add_back_content2);
+	ft_lstadd_back(&add_back, addback_node1);
+	ft_lstadd_back(&add_back, addback_node2);
+	// printf("------------\nADD_BACK: \n%s\n%s\n", (char *)add_back->content, (char *)add_back->next->content);
+	// printf("------------\n");
+	if (strcmp(add_back_content1, (char *)add_back->content) == 0
+		&& strcmp(add_back_content2, (char *)add_back->next->content) == 0
+		&& add_back->next->next == NULL)
+		printf("add_back: OK!\n");
+	else
+		printf("add_back: Error\n");
+
+	// * lstdelone
+	ft_lstdelone(lstnew, &del_str);
+
+	// * lstclear
+	ft_lstclear(&add_front, &del_str);
+	ft_lstclear(&lstsize_node1, &del_str);
+	ft_lstclear(&lstlast_node1, &del_str);
+	ft_lstclear(&add_back, &del_str);
+
+	// * lstiter
+	ft_lstiter();
+
 }
