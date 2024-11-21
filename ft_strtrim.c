@@ -6,13 +6,13 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:54:11 by agruet            #+#    #+#             */
-/*   Updated: 2024/11/18 13:27:27 by agruet           ###   ########.fr       */
+/*   Updated: 2024/11/21 11:16:49 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	in_set(char const *set, int c)
+static int	in_set(char const *set, int c)
 {
 	while (*set)
 	{
